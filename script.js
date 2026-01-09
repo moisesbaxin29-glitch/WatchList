@@ -1,13 +1,22 @@
 console.log("js console");
 
+let data;
+let grid = document.querySelector(".grid-container");
+
 var xhttp = new XMLHttpRequest();
 
-xhttp.onreadystatechange = function (){
-    if(xhttp.readyState === 4 && xhttp.status === 200){
-        let games = JSON.parse(xhttp.responseText);
-        console.log(games[0].title);
+xhttp.onreadystatechange = function{
+    if(this.readyState == 4 && this.status == 200){
+
+        data = JSON.parse(xhttp.responseText);
+        console.log(data);
+
+        data.forEach(function(movie){
+            let card = document.createElement("div");
+            card.classList.add("card");
+
+            let textData = 
+            "<div class = 'movie-title'>"
+        }
     }
 }
-
-xhttp.open("GET", "gamedata.json", true);
-xhttp.send();
