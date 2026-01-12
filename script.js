@@ -5,7 +5,7 @@ let grid = document.querySelector(".grid-container");
 
 var xhttp = new XMLHttpRequest();
 
-xhttp.onreadystatechange = function{
+xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
 
         data = JSON.parse(xhttp.responseText);
@@ -16,7 +16,23 @@ xhttp.onreadystatechange = function{
             card.classList.add("card");
 
             let textData = 
-            "<div class = 'movie-title'>"
-        }
+            "<div class = 'movie-title'>" + movie.title + "</div>" + 
+            "<span>" + 
+            "Cast: "  + movie.cast + "<br>" +
+            "Release Date: " + movie.year + "<br>" + 
+            "Needs Research: " +
+            "</span>";
+
+            card.innerHTML = textData;
+
+            if(movie.imgSrc){
+                card.style.backgroundImage = "url('" + movie.imgSrc +"')";
+            }
+
+            grid.appendChild(card);
+        });
     }
-}
+};
+
+xhttp.open("GET", "movie.json", true);
+xhttp.send();
