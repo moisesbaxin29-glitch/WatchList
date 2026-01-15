@@ -1,7 +1,7 @@
 console.log("js console");
 
-let data;
-let grid = document.querySelector(".grid-container");
+var data;
+var grid = document.querySelector(".grid-container");
 
 var xhttp = new XMLHttpRequest();
 
@@ -19,9 +19,7 @@ xhttp.onreadystatechange = function(){
             "<div class = 'movie-title'>" + movie.title + "</div>" + 
             "<span>" + 
             "Cast: "  + movie.cast + "<br>" +
-            "Release Date: " + movie.year + "<br>" + 
-            "Needs Research: " +
-            "</span>";
+            "Release Date: " + movie.year + "<br>";
 
             card.innerHTML = textData;
 
