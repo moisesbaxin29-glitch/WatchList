@@ -36,3 +36,12 @@ xhttp.onreadystatechange = function () {
 
 xhttp.open("GET", "movie.json", true);
 xhttp.send();
+
+let button = document.getElementById(button)
+
+button.addEventListener("click", function () {
+  let newMovie = input.value;
+  movies.push(newMovie);
+  console.log(Movie);
+  return Movie;
+});
