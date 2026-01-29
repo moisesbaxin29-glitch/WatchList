@@ -37,11 +37,22 @@ xhttp.onreadystatechange = function () {
 xhttp.open("GET", "movie.json", true);
 xhttp.send();
 
-let button = document.getElementById(button)
-
-button.addEventListener("click", function () {
-  let newMovie = input.value;
-  movies.push(newMovie);
-  console.log(Movie);
-  return Movie;
-});
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    let title = titleInput.value;
+    let publisher = devInput.value;
+    let releaseDate = releaseDataInput.value;
+    let giftSrc = gifInput.value;
+    let imgSrc = imgInput.value;
+    let newObj = {
+        "id":getNextId(),
+        "title":title,
+        "publisher":publisher,
+        "releaseDate":releaseDate,
+        "imgSrc":imgSrc,
+        "gifSrc":gifSrc
+    };
+    
+        // submitData(newObj);
+        // form.reset();
+    });
