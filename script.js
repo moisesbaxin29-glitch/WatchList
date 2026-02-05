@@ -28,8 +28,10 @@ xhttp.onreadystatechange = function () {
             if (movie.imgSrc) {
                 card.style.backgroundImage = "url('" + movie.imgSrc + "')";
             }
-
-            grid.appendChild(card);
+            if(grid){
+                grid.appendChild(card);
+            }
+            
         });
     }
 };
@@ -37,22 +39,32 @@ xhttp.onreadystatechange = function () {
 xhttp.open("GET", "movie.json", true);
 xhttp.send();
 
+
+var form = document.querySelector("form");
+var titleInput = document.querySelector("#Movies");
+var casInput = document.querySelector("#Cast");
+var dateInput = document.querySelector("#Release-Date");
+
+
+
+
+
 form.addEventListener("submit", function(e){
     e.preventDefault();
     let title = titleInput.value;
-    let publisher = devInput.value;
-    let releaseDate = releaseDataInput.value;
-    let giftSrc = gifInput.value;
-    let imgSrc = imgInput.value;
+    let cast = casInput.value;
+    let releaseDate = dateInput.value;
     let newObj = {
-        "id":getNextId(),
         "title":title,
-        "publisher":publisher,
-        "releaseDate":releaseDate,
-        "imgSrc":imgSrc,
-        "gifSrc":gifSrc
+        "Cast":Cast,
+        "releaseDate":releaseDate
     };
     
-        // submitData(newObj);
-        // form.reset();
+
+        data.push(newObj);
+        localStorage.setItem("datalist", JSON.stringify(data));
+        console.log("Saved new items to local storage");
+
+        form.reset();
     });
+
