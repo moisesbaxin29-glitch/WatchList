@@ -11,7 +11,7 @@
 <body>
 <ul>
   <li><a href="index.html">Home</a></li>
-  <li><a href="form.html">Add New Movies</a></li>
+  <!-- <li><a href="form.html">Add New Movies</a></li> -->
 </ul>
 
 
@@ -21,8 +21,22 @@
 
  <h1>Movies from the 2020's</h1>   
  <div class="grid-container"></div>
- <button>Button</button>
+ 
 
+
+    <form action="index.php" method="POST" enctype="multipart/form-data">
+
+        <label for="fname">First name:</label><br>
+        <input type="text" id="Movies" placeholder="Name of Movies" required><br>
+
+        <label for="lname">Last Name:</label><br>
+        <input type="text" id="Release-Date" placeholder="Release-DateS"><br>
+
+        <label for="email">email:</label><br>
+        <input type="text" id="Cast" placeholder="Cast Members"><br>
+        <input type="submit" id="button">
+
+    </form>
 
 
 

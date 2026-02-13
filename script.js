@@ -2,7 +2,11 @@ console.log("js console");
 
 var data;
 var grid = document.querySelector(".grid-container");
-
+if(localStorage.getItem("datalist")){
+    data = JSON.parse(localStorage.getItem("datalist"));
+    makeCard();
+}
+else{
 var xhttp = new XMLHttpRequest();
 
 xhttp.onreadystatechange = function () {
@@ -10,9 +14,16 @@ xhttp.onreadystatechange = function () {
 
         data = JSON.parse(xhttp.responseText);
         console.log(data);
-        localStorage.setItem("dataList", JSON.stringify(data));
+        localStorage.setItem("datalist", JSON.stringify(data));
 
+    }
+};
 
+xhttp.open("GET", "movie.json", true);
+xhttp.send();
+
+}
+function makeCard(){
         data.forEach(function (movie) {
             let card = document.createElement("div");
             card.classList.add("card");
@@ -33,11 +44,7 @@ xhttp.onreadystatechange = function () {
             }
             
         });
-    }
-};
-
-xhttp.open("GET", "movie.json", true);
-xhttp.send();
+}
 
 
 var form = document.querySelector("form");
@@ -64,6 +71,15 @@ form.addEventListener("submit", function(e){
         data.push(newObj);
         localStorage.setItem("datalist", JSON.stringify(data));
         console.log("Saved new items to local storage");
+
+            
+            makeCards();
+            
+
+
+
+
+
 
         form.reset();
     });
